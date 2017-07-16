@@ -1,0 +1,65 @@
+$animation_time: 0.1s;
+$tweet_width: 300px;
+
+body {
+    overflow: hidden;
+}
+
+.tweet {
+    overflow: hidden;
+    position: absolute;
+    height: 104px;
+    width: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px #ccc solid;
+    box-shadow: 0px 0px 5px 0px #ddd;
+    animation: Tweet_Animation $animation_time cubic-bezier(0, 1, 1, 1) 0s forwards;
+}
+
+.icon {
+    margin: 10px;
+    width: 0px;
+    height: 64px;
+    animation: Icon_Animation $animation_time linear 0s forwards;
+}
+
+.value {
+    overflow: hidden;
+    margin: 6px;
+    height: 72px;
+    width: 71%;
+    font-family: メイリオ;
+    font-size: 12px;
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+@keyframes Tweet_Animation {
+    from {
+        margin-left: $tweet_width / 2;
+    }
+    to {
+        margin-right: 0px;
+        width: $tweet_width;
+    }
+}
+
+@keyframes Icon_Animation {
+    to {
+        width: 64px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: #BBBBBB;
+}

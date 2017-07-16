@@ -1,0 +1,15 @@
+{
+    "server": {
+        "name": "OZtter2",
+        "version": "1.0.0",
+        "domain": "localhost",
+        "port": 3000,
+        "session_secret": "Any character string."
+    },
+    "api-keys": {
+        "twitter": {
+            "ck": "Consumer Key (API Key)",
+            "cs": "Consumer Secret (API Secret)"
+        }
+    }
+}

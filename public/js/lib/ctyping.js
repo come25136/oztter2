@@ -1,0 +1,1 @@
+!function(t){t.fn.ctyping=function(n,o,i,a){return this.each(function(){function r(){e.val(e.val()+h[u]),++u!==h.length?setTimeout(r,Math.floor(Math.random()*(++i-o))+o):a()}var e=t(this),h=n.toString().split(""),u=0;setTimeout(r,Math.floor(Math.random()*(++i-o))+o)})}}(jQuery);
