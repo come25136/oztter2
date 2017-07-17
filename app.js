@@ -120,6 +120,15 @@ io.sockets.on('connection', socket => {
         socket.emit('err', error.message);
       });
     });
+
+    socket.emit('tweet', {
+      id_str: new Date().getTime(),
+      text: 'connecting',
+      user: {
+        screen_name: 'momizicode',
+        profile_image_url_https: '/img/info.png'
+      }
+    });
   });
 
   socket.on('tweet', (content) => {
