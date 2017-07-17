@@ -51,9 +51,7 @@ function start(token, token_secret, limit) {
 
     $('#' + data.id_str).draggable({ handle: '.title_bar' });
 
-    if (0 < w_size) {
-      w_size--;
-    }
+    if (0 < w_size) w_size--;
   });
 
   $tweet.on("keydown", function (e) {
@@ -65,6 +63,8 @@ function start(token, token_secret, limit) {
       $this.val('');
     }
   });
+
+  socketio.on('delete', function (id_str) { $('#' + id_str).remove(); });
 
   socketio.on('err', function (message) {
     switch (message) {

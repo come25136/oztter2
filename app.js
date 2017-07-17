@@ -84,14 +84,10 @@ app.get('/reset', (req, res) => {
 });
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  res.sendStatus(404);
-});
+app.use((req, res, next) => res.sendStatus(404));
 
 // error handler
-app.use((err, req, res, next) => {
-  res.redirect('/reset');
-});
+app.use((err, req, res, next) => res.redirect('/reset'));
 
 let sockets = {};
 
@@ -116,6 +112,8 @@ io.sockets.on('connection', socket => {
         socket.emit('tweet', data);
       });
 
+      stream.on('delete', data => socket.emit('delete', data.delete.status.id_str));
+
       stream.on('error', error => {
         socket.emit('err', error.message);
       });
@@ -131,9 +129,7 @@ io.sockets.on('connection', socket => {
     });
   });
 
-  socket.on('tweet', (content) => {
-    sockets[socket.id].post('statuses/update', { status: content }, (error, tweet, response) => { });
-  });
+  socket.on('tweet', (content) => sockets[socket.id].post('statuses/update', { status: content }, (error, tweet, response) => { }));
 
   socket.on('disconnect', () => {
     sockets[socket.id].stream.destroy();
