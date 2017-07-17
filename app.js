@@ -119,12 +119,16 @@ io.sockets.on('connection', socket => {
       stream.on('error', error => {
         socket.emit('err', error.message);
       });
-
-      socket.on('disconnect', () => {
-        sockets[socket.id].stream.destroy();
-
-        delete sockets[socket.id];
-      });
     });
+  });
+
+  socket.on('tweet', (content) => {
+    sockets[socket.id].post('statuses/update', { status: content }, (error, tweet, response) => { });
+  });
+
+  socket.on('disconnect', () => {
+    sockets[socket.id].stream.destroy();
+
+    delete sockets[socket.id];
   });
 });

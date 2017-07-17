@@ -3,6 +3,7 @@ var z_count = 0;
 function start(token, token_secret, limit) {
   const
     socketio = io.connect(location.hostname + ':' + location.port),
+    $tweet = $('#tweet'),
     $tweets = $('#tweets');
 
   socketio.on('init', function () {
@@ -52,6 +53,16 @@ function start(token, token_secret, limit) {
 
     if (0 < w_size) {
       w_size--;
+    }
+  });
+
+  $tweet.on("keydown", function (e) {
+    $this = $(this);
+
+    if (e.keyCode === 13 && $this.val() !== '') {
+      socketio.emit('tweet', $this.val());
+
+      $this.val('');
     }
   });
 
