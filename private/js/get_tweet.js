@@ -43,8 +43,8 @@ function start(token, token_secret, limit) {
 
     function tweet_value(value) {
       return value
-        .replace(/(https?:\/\/[\x21-\x7e]+)/gi, '<a href="$1" target="_blank">>$1</a>') // メンションのURLと干渉するため、必ず一番最初にこの処理を書くこと
-        .replace(/@(\w+)/g, '<a href="https://twitter.com/$1" target="_blank">>@$1</a>')
+        .replace(/(https?:\/\/[\x21-\x7e]+)/gi, '<a href="$1" target="_blank">$1</a>') // メンションのURLと干渉するため、必ず一番最初にこの処理を書くこと
+        .replace(/@(\w+)/g, '<a href="https://twitter.com/$1" target="_blank">@$1</a>')
         .replace(/\r\n?/g, "<br>");
     }
 
@@ -55,7 +55,7 @@ function start(token, token_secret, limit) {
     }
   });
 
-  socketio.on('error', function (message) {
+  socketio.on('err', function (message) {
     switch (message) {
       default:
         console.error(message);

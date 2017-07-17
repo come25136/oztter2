@@ -22,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
@@ -111,18 +111,19 @@ io.sockets.on('connection', socket => {
       sockets[socket.id].stream = stream;
 
       stream.on('data', data => {
+        data.user.profile_image_url_https = data.user.profile_image_url_https.replace(/normal/g, 'bigger');
+
         socket.emit('tweet', data);
       });
 
       stream.on('error', error => {
-        socket.emit('error', error.message);
+        socket.emit('err', error.message);
+      });
+
+      socket.on('disconnect', () => {
+        sockets[socket.id].stream.destroy();
+
+        delete sockets[socket.id];
       });
     });
-
-    socket.on('disconnect', () => {
-      sockets[socket.id].stream.destroy();
-
-      delete sockets[socket.id];
-    });
   });
-});
