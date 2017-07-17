@@ -2,6 +2,7 @@ const
   config = require('config'),
   express = require('express'),
   app = express(),
+  favicon = require('serve-favicon'),
   session = require('express-session'),
   path = require('path'),
   ejs = require('ejs'),

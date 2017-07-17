@@ -5,19 +5,22 @@
 
     <title><%= title %></title>
 
-    <link href="css/lib/jquery-ui.min.css">
-    <link href="css/lib/jquery-ui.structure.min.css">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
 
-    <link href="css/get_tweet.css" rel="stylesheet" type="text/css">
-    <link href="css/title_bar.css" rel="stylesheet" type="text/css">
+    <link href="/css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="/css/lib/jquery-ui.structure.min.css" rel="stylesheet">
+
+    <link href="/css/get_tweet.css" rel="stylesheet">
+    <link href="/css/title_bar.css" rel="stylesheet">
+    <link href="/css/tweet.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/lib/jquery-ui.min.js"></script>
+    <script src="/js/lib/jquery-ui.min.js"></script>
 
     <script src="/socket.io/socket.io.js"></script>
 
-    <script src="js/get_tweet.js"></script>
-    <script src="js/title_bar.js"></script>
+    <script src="/js/get_tweet.js"></script>
+    <script src="/js/title_bar.js"></script>
 </head>
 <body onLoad="start('<%= token %>', '<%= token_secret %>', <%= limit %>)">
 <div id="tweets"></div>
