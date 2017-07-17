@@ -21,6 +21,8 @@
 
     <script src="/js/get_tweet.js"></script>
     <script src="/js/title_bar.js"></script>
+
+    <%- partial('./include/analyticstracking'); %>
 </head>
 <body onLoad="start('<%= token %>', '<%= token_secret %>', <%= limit %>)">
 <div id="tweets"></div>

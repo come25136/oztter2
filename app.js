@@ -2,6 +2,7 @@ const
   config = require('config'),
   express = require('express'),
   app = express(),
+  partials = require('express-partials'),
   favicon = require('serve-favicon'),
   session = require('express-session'),
   path = require('path'),
@@ -16,6 +17,8 @@ const
   io = require("socket.io").listen(server);
 
 app.disable('x-powered-by');
+
+app.use(partials());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -25,7 +25,8 @@
     <script data-source="/js/lib/gwdrectangle_min.js" data-version="3" data-exports-type="gwd-rectangle" src="/js/lib/gwdrectangle_min.js"></script>
 
     <script src="js/progress.js"></script>
-    <?php include_once("lib/analyticstracking.php"); ?>
+    
+    <%- partial('./include/analyticstracking'); %>
 </head>
 
 <body onLoad="start('<%= name %>')">
