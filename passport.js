@@ -3,13 +3,9 @@ const
     passport = require('passport'),
     TwitterStrategy = require('passport-twitter').Strategy;
 
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
+passport.serializeUser((user, done) => done(null, user));
 
-passport.deserializeUser((obj, done) => {
-    done(null, obj);
-});
+passport.deserializeUser((obj, done) => done(null, obj));
 
 passport.use(new TwitterStrategy({
     consumerKey: config.get('api-keys.twitter.ck'),
@@ -24,4 +20,4 @@ passport.use(new TwitterStrategy({
     }
 ));
 
-module.exports = { passport: passport };
+module.exports = passport;
