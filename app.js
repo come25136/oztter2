@@ -134,8 +134,5 @@ io.sockets.on('connection', socket => {
     }
 
     delete sockets[socket.id];
-
-    console.log(sockets);
-    console.log(twitters);
   });
 });
