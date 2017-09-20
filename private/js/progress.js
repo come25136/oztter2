@@ -61,14 +61,14 @@ function start(name) {
     }
 
     setTimeout(function () {
-        $('#name').ctyping(name, 50, 90, function () {
+        $('#b').ctyping(name, 50, 90, function () {
             var pass = "";
             for (var i = 0; i < 26; i++) {
                 pass += c[Math.floor(Math.random() * c.length)];
             }
 
-            $('#pass').ctyping(pass, 10, 100, function () {
-                $('.form').hide();
+            $('#c').ctyping(pass, 10, 100, function () {
+                $('.a').hide();
                 $progressbar.show();
 
                 $('#progress-t').css('width', '0px');
