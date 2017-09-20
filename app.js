@@ -9,10 +9,18 @@ const
   passport = require(`${__dirname}/passport`),
   Twitter = require('twitter'),
   crypto = require("crypto"),
-  server = require("http").createServer(app).listen(process.env.PORT || config.get('server.port'), function () {
-    console.log(`${config.get('server.name')} | port: ${this.address().port}`);
-  }),
-  io = require("socket.io").listen(server);
+  server = require("http").createServer(app),
+  io = require("socket.io")().attach(server),
+  cluster = require('cluster'),
+  sticky = require('sticky-session'),
+  port = process.env.PORT || config.get('server.port');
+
+if (!sticky.listen(server, port)) {
+  console.log(`${config.get('server.name')} | port: ${port}`);
+  return;
+}
+
+console.log(`Started on thread ${cluster.worker.id}`);
 
 app.disable('x-powered-by');
 
