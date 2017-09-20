@@ -4,7 +4,8 @@ function start(token, token_secret, limit) {
   const
     socketio = io.connect(location.hostname + ':' + location.port),
     $tweet = $('#tweet'),
-    $tweets = $('#tweets');
+    $tweets = $('#tweets'),
+    se = new Audio('/Oztter2_SE.mp3');
 
   socketio.on('init', function () {
     socketio.emit('init', {
@@ -52,6 +53,9 @@ function start(token, token_secret, limit) {
         + '<img class="icon" align="left" src="' + data.user.profile_image_url_https + '">'
         + '<p class="value">' + tweet_value(data.text) + '</p>'
         + '</div>');
+
+      se.currentTime = 0;
+      se.play();
 
       function calculation(min, max, size) {
         return Math.random() * ((max - min) - min) + min;
